@@ -4,7 +4,8 @@
   "description": "A rebuilt version of my old weather app built with express and the pug engine.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "ui": "browser-sync start --config bs-config.js"
   },
   "repository": {
     "type": "git",
