@@ -1,3 +1,8 @@
 body {
     background: aqua;
 }
+
+.WelcomeView {
+    background: url("img/img_background.jpg") left bottom;
+    background-size: cover;
+}
