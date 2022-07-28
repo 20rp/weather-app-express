@@ -14,8 +14,11 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const app = express();
 const port = process.env.PORT || "8000";
-let airportCode = "npe";
-let apiUrl = "http://api.weatherapi.com/v1/current.json?key=5068a32470324e3b963231912221905&q=" + airportCode + "&aqi=no";
+
+// Array of airport codes
+const airports = ["akl", "wlg", "chc", "zqn", "hlz", "npe"];
+var airportCode = "npe";
+var apiUrl = "http://api.weatherapi.com/v1/current.json?key=5068a32470324e3b963231912221905&q=" + airportCode + "&aqi=no";
 
 /**
  *  App Configuration
@@ -37,23 +40,22 @@ app.get("/", (req, res) => {
 
 // http://localhost:3000/fetch
 app.get("/fetch", (req, res) => {
+    console.log();
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {
             console.log(json.location.name);
+            console.log(json.location.region);
+            console.log(json.current.last_updated);
+            console.log(json.current.temp_c);
+            console.log(json.current.condition.text);
+            console.log(json.current.wind_kph);
+            console.log(json.current.humidity);
+            console.log(json.current.precip_mm);
         });
 });
 
-app.get("/test", (req, res) => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-        .then(res => res.json())
-        .then(json => {
-            console.log("First user in the array:");
-            console.log(json[0]);
-            console.log("Name of the first user in the array:");
-            console.log(json[0].name);
-    });
-});
+// app.get("/fetch?ap=", ())
 
 /**
  * Server Activation
