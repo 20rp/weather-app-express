@@ -6,3 +6,9 @@ body {
     background: url("img/img_background.jpg") left bottom;
     background-size: cover;
 }
+
+.WeatherView {
+    color: black;
+    background: url("img/img_background.jpg") left bottom;
+    background-size: cover;
+}

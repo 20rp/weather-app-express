@@ -3,8 +3,10 @@
  * Required External Modules
  */
 
+const { json } = require("express");
 const express = require("express");
 const path = require("path");
+const pug = require("pug");
 
 // Because node-fetch is an ESM only module, we have to import it asynchronously.
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
@@ -14,6 +16,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const app = express();
 const port = process.env.PORT || "8000";
+const templateCompiler = pug.compileFile("views/weather.pug");
 
 // Array of airport codes
 const airports = ["akl", "wlg", "chc", "zqn", "hlz", "npe"];
@@ -38,6 +41,10 @@ app.get("/", (req, res) => {
     res.render("index", { title: "Home" });
 });
 
+app.get("/test", (req, res) => {
+    console.log(templateCompiler( { name: 'Arlo' }));
+})
+
 // http://localhost:3000/fetch
 app.get("/fetch", (req, res) => {
     console.log();
@@ -52,6 +59,7 @@ app.get("/fetch", (req, res) => {
             console.log(json.current.wind_kph);
             console.log(json.current.humidity);
             console.log(json.current.precip_mm);
+            res.render("weather", { title: `${json.location.name}` })
         });
 });
 
