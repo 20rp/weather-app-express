@@ -16,7 +16,6 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const app = express();
 const port = process.env.PORT || "8000";
-const templateCompiler = pug.compileFile("views/weather.pug");
 
 // Array of airport codes
 const airports = ["akl", "wlg", "chc", "zqn", "hlz", "npe"];
@@ -42,24 +41,27 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-    console.log(templateCompiler( { name: 'Arlo' }));
+
 })
 
 // http://localhost:3000/fetch
 app.get("/fetch", (req, res) => {
-    console.log();
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {
-            console.log(json.location.name);
-            console.log(json.location.region);
-            console.log(json.current.last_updated);
-            console.log(json.current.temp_c);
-            console.log(json.current.condition.text);
-            console.log(json.current.wind_kph);
             console.log(json.current.humidity);
             console.log(json.current.precip_mm);
-            res.render("weather", { title: `${json.location.name}` })
+            
+            res.render("weather", { 
+                apName: `${json.location.name}`,
+                apRegion: `${json.location.region}`,
+                apLastUp: `${json.current.last_updated}`,
+                apTemp: `${json.current.temp_c} °C`,
+                apCond: `${json.current.condition.text}`,
+                apWind: `${json.current.wind_kph}`,
+                apHum: `${json.current.humidity}`,
+                apPrecip: `${json.current.precip_mm}`
+             });
         });
 });
 

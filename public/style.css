@@ -1,5 +1,5 @@
 body {
-    background: aqua;
+    background: #6dace770;
 }
 
 .WelcomeView {
@@ -8,7 +8,7 @@ body {
 }
 
 .WeatherView {
-    color: black;
-    background: url("img/img_background.jpg") left bottom;
+    background: black;
+    /* background: url("img/img_background.jpg") left bottom; */
     background-size: cover;
 }

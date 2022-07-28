@@ -1,4 +1,12 @@
-extends layout 
-
-block layout-content
-    div.View.WeatherView
+doctype html 
+html 
+    head 
+    body 
+        h1 #{apName}
+        h1 #{apRegion}
+        h1 Last Updated: #{apLastUp}
+        h1 #{apTemp}
+        h1 #{apCond}
+        h1 Current Wind Speed: #{apWind} K/ph
+        h1 Current Relative Humidity: #{apHum}%
+        h1 Precipitation: #{apPrecip}
