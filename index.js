@@ -19,7 +19,7 @@ const port = process.env.PORT || "8000";
 
 // Array of airport codes
 const airports = ["akl", "wlg", "chc", "zqn", "hlz", "npe"];
-var airportCode = "npe";
+var airportCode = "akl";
 var apiUrl = "http://api.weatherapi.com/v1/current.json?key=5068a32470324e3b963231912221905&q=" + airportCode + "&aqi=no";
 
 /**
@@ -49,9 +49,6 @@ app.get("/fetch", (req, res) => {
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {
-            console.log(json.current.humidity);
-            console.log(json.current.precip_mm);
-            
             res.render("weather", { 
                 apName: `${json.location.name}`,
                 apRegion: `${json.location.region}`,

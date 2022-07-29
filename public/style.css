@@ -3,12 +3,51 @@ body {
 }
 
 .WelcomeView {
-    background: url("img/img_background.jpg") left bottom;
+    display: flexbox;
+    background: url("img/welcome_image.jpg") left bottom;
     background-size: cover;
+    padding: 15% 0;
 }
 
 .WeatherView {
-    background: black;
-    /* background: url("img/img_background.jpg") left bottom; */
+    display: flexbox;
+    background: url("img/img_background.jpg") left bottom;
     background-size: cover;
+    /* T R B L */
+    padding: 10% 0 10% 0;
+    border-radius: 10px;
+}
+
+h1, h2 {
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: auto;
+}
+
+#airportSelect {
+    padding: 10px 0 10 0;
+}
+
+.btn {
+    margin-top: 10px;
+    background-color: #245edc; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: flexbox;
+    font-size: 20px;
+    border-radius: 5px;
+  }  
+
+.button-primary {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#select-form {
+    margin-top: 15px;
+    text-align: center;
 }
