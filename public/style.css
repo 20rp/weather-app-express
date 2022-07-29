@@ -26,10 +26,11 @@ h1, h2 {
 }
 
 #airportSelect {
-    padding: 10px 0 10 0;
+    padding: 5px 0 5px 0;
 }
 
 .btn {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 10px;
     background-color: #245edc; /* Green */
     border: none;
@@ -40,7 +41,13 @@ h1, h2 {
     display: flexbox;
     font-size: 20px;
     border-radius: 5px;
-  }  
+}
+
+.btn:hover{
+    color: #666666;
+    background-color: #d7dfef;
+    border-left: 3px solid blue;
+}  
 
 .button-primary {
     margin-top: 20px;

@@ -6,8 +6,7 @@
 const { json } = require("express");
 const express = require("express");
 const path = require("path");
-const pug = require("pug");
-
+const jsdom = require("jsdom");
 // Because node-fetch is an ESM only module, we have to import it asynchronously.
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 /**
@@ -37,15 +36,18 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // http://localhost:3000/
 app.get("/", (req, res) => {
+    var ap = document.getElementById("airportSelect");
+    var apVal = ap.options[ap.selectedIndex].value;
     res.render("index", { title: "Home" });
 });
 
 app.get("/test", (req, res) => {
-
+    console.log(apVal);
 })
 
 // http://localhost:3000/fetch
 app.get("/fetch", (req, res) => {
+    console.log(ap.options[ap.selectedIndex].text);
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {

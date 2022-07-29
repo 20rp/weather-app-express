@@ -1,13 +1,13 @@
 extends layout 
 
-block layout-content 
+block layout-content
     div.View.WelcomeView
         h1.Banner Airport Weather
         div.Message
             div.Title
                 h1 All the Airport Weather you need!
         div(id="select-form").form(method="GET" action="/fetch")
-            select#airportSelect
+            select(class="airportSelect")
                 option(value="npe") Napier Airport <br>
                 option(value="akl") Auckland International Airport <br>
                 option(value="chc") Christchuch International Airport <br>
@@ -15,4 +15,5 @@ block layout-content
                 option(value="zqn") Queenstown Airport <br>
                 option(value="hlz") Hamilton Airport <br>
         div.button-primary
-            a.btn(href="/fetch") Check Weather
+            script 
+            a.btn(href=`/fetch`) Check Weather
