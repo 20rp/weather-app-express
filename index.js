@@ -18,7 +18,7 @@ const port = process.env.PORT || "8000";
 
 // Array of airport codes
 const airports = ["akl", "wlg", "chc", "zqn", "hlz", "npe"];
-var airportCode = "akl";
+var airportCode = "npe";
 var apiUrl = "http://api.weatherapi.com/v1/current.json?key=5068a32470324e3b963231912221905&q=" + airportCode + "&aqi=no";
 
 /**
@@ -36,8 +36,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // http://localhost:3000/
 app.get("/", (req, res) => {
-    var ap = document.getElementById("airportSelect");
-    var apVal = ap.options[ap.selectedIndex].value;
+    // var ap = document.getElementById("airportSelect");
+    // var apVal = ap.options[ap.selectedIndex].value;
     res.render("index", { title: "Home" });
 });
 
@@ -47,7 +47,6 @@ app.get("/test", (req, res) => {
 
 // http://localhost:3000/fetch
 app.get("/fetch", (req, res) => {
-    console.log(ap.options[ap.selectedIndex].text);
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {
