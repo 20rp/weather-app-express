@@ -7,12 +7,12 @@ block layout-content
             div.Title
                 h1 All the Airport Weather you need!
         div(id="select-form").form(method="GET" action="/fetch")
-            select(class="airportSelect")
+            select(class="airportSelect" name="airportSelect")
                 option(value="npe") Napier Airport <br>
                 option(value="akl") Auckland International Airport <br>
                 option(value="chc") Christchuch International Airport <br>
                 option(value="wlg") Wellington International Airport <br>
                 option(value="zqn") Queenstown Airport <br>
                 option(value="hlz") Hamilton Airport <br>
-        div.button-primary 
-            a.btn(href=`/fetch`) Check Weather
+        div.button-primary
+            a.btn(href=`/fetch` action="submit") Check Weather

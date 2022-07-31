@@ -41,12 +41,10 @@ app.get("/", (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-app.get("/test", (req, res) => {
-    console.log(apVal);
-})
-
 // http://localhost:3000/fetch
 app.get("/fetch", (req, res) => {
+    var selected = req.body.airportSelect;
+
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {
@@ -58,7 +56,8 @@ app.get("/fetch", (req, res) => {
                 apCond: `${json.current.condition.text}`,
                 apWind: `${json.current.wind_kph}`,
                 apHum: `${json.current.humidity}`,
-                apPrecip: `${json.current.precip_mm}`
+                apPrecip: `${json.current.precip_mm}`,
+                selected: selected
              });
         });
 });
