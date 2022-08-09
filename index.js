@@ -43,6 +43,7 @@ app.get("/", (req, res) => {
     res.render("index", { 
         title: "Home",
     });
+    console.log(req.body.)
 });
 
 app.get('/post', function (req, res) {
