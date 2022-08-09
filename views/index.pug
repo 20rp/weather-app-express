@@ -6,13 +6,13 @@ block layout-content
         div.Message
             div.Title
                 h1 All the Airport Weather you need!
-        div(id="select-form").form(role="form" method="POST" action="/post")
-            select(class="airportSelect" name="airportSelect")
-                option(value="npe") Napier Airport <br>
-                option(value="akl") Auckland International Airport <br>
-                option(value="chc") Christchuch International Airport <br>
-                option(value="wlg") Wellington International Airport <br>
-                option(value="zqn") Queenstown Airport <br>
-                option(value="hlz") Hamilton Airport <br>
-        div.button-primary
-            a.btn(href=`/post` action="submit") Check Weather
+        div.form-group
+            form(method="POST" action="/fetch")
+                select(name="ap")
+                    option(value="npe") Napier Airport <br>
+                    option(value="akl") Auckland International Airport <br>
+                    option(value="chc") Christchuch International Airport <br>
+                    option(value="wlg") Wellington International Airport <br>
+                    option(value="zqn") Queenstown Airport <br>
+                    option(value="hlz") Hamilton Airport <br>
+                button.btn.btn-primary(type="submit") Check Weather

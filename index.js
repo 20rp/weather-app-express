@@ -18,7 +18,6 @@ const port = process.env.PORT || "8000";
 // Array of airport codes
 // const airports = ["akl", "wlg", "chc", "zqn", "hlz", "npe"];
 var airportCode = "npe";
-var apiUrl = "http://api.weatherapi.com/v1/current.json?key=5068a32470324e3b963231912221905&q=" + airportCode + "&aqi=no";
 
 /**
  *  App Configuration
@@ -38,27 +37,23 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // http://localhost:3000/
 app.get("/", (req, res) => {
-    // var ap = document.getElementById("airportSelect");
-    // var apVal = ap.options[ap.selectedIndex].value;
     res.render("index", { 
         title: "Home",
     });
-    console.log(req.body.)
 });
 
-app.get('/post', function (req, res) {
-    res.render("post", {
-    });
-    console.log(res.body);
-    res.send(JSON.stringify(res.body));
-})
-
 // http://localhost:3000/fetch
-app.get("/fetch", (req, res) => {
+app.post("/fetch", (req, res) => {
+    
+    airportCode = JSON.stringify(req.body.ap);
+    var escAirporCode = airportCode.replaceAll('"', '');
+    var apiUrl = "http://api.weatherapi.com/v1/current.json?key=5068a32470324e3b963231912221905&q=" + escAirporCode + "&aqi=no";
+    
     fetch(apiUrl)
         .then(res => res.json())
         .then(json => {
-            res.render("weather", { 
+            res.render("weather", {
+                title: `${json.location.name}`, 
                 apName: `${json.location.name}`,
                 apRegion: `${json.location.region}`,
                 apLastUp: `${json.current.last_updated}`,
@@ -66,13 +61,10 @@ app.get("/fetch", (req, res) => {
                 apCond: `${json.current.condition.text}`,
                 apWind: `${json.current.wind_kph}`,
                 apHum: `${json.current.humidity}`,
-                apPrecip: `${json.current.precip_mm}`,
+                apPrecip: `${json.current.precip_mm}`
              });
-
         });
 });
-
-// app.get("/fetch?ap=", ())
 
 /**
  * Server Activation
