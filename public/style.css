@@ -32,8 +32,16 @@ h1#Banner, div.Title {
     text-shadow: -1px 1px 0 #000;
 }
 
-#airportSelect {
+#form-group {
     padding: 4px 0 4px 0;
+    text-align: center;
+}
+
+#airportSelect {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: auto;
 }
 
 .back-button {
@@ -63,10 +71,5 @@ h1#Banner, div.Title {
 
 .button-primary {
     margin-top: 20px;
-    text-align: center;
-}
-
-#select-form {
-    margin-top: 15px;
     text-align: center;
 }
