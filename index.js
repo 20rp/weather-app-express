@@ -8,6 +8,7 @@ const express = require("express");
 const path = require("path");
 // Because node-fetch is an ESM only module, we have to import it asynchronously.
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 /**
  * App Variables
  */

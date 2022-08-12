@@ -1,13 +1,13 @@
 # Weater App Express 
 This is a simple web based weather application that leverages express with NodeJS to call  https://weatherapi.com for detailed weather information about New Zealand airports. 
 
-The markup is taken care of by the PUG templating agent.
+The markup is taken care of by the PUG templating engine.
 ***
 ## Modules you will need
 
 * nodeJS
 * express
-* node-fetch
+* node-fetch (We do not need to worry about installing this one, it is accessed asynchronously through the ES Module method.)
 * nodemon
 * browser-sync
 
