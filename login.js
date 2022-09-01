@@ -1,5 +1,5 @@
 const app = express();
-const mysql = require("mysql";)
+const mysql = require("mysql";);
 
 app.use(session({
     secret: 'secret',

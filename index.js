@@ -5,9 +5,28 @@
 
 const { json } = require("express");
 const express = require("express");
+const { request } = require("http");
 const path = require("path");
 // Because node-fetch is an ESM only module, we have to import it asynchronously.
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const mysql = require("mysql");
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized:  true
+}));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+const connection = mysql.createConnection({
+    host    : 'localhost',
+    user    : 'root',
+    password : 'th3Right3ousFury!',
+    datbase : 'nodelogin'
+});
 
 /**
  * App Variables
@@ -42,6 +61,30 @@ app.get("/", (req, res) => {
         title: "Login",
     });
 });
+
+app.post('/auth', function(req, res) {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    if (username && password) 
+    {
+        connection.query('SELECT * FROM accounts WHERE username = ? AND password = ? ', [username, password], function(error, results, fields) 
+        {});
+        //     if (error)  throw error;
+        //     if(results.length > 0) {
+        //         req.session.loggedin = true;
+        //         req.session.username = username;
+        //         res.redirect("/fetch");
+        //     } else {
+        //         res.send('Incorrect')''
+        //     }
+        //     res.end();
+        // });
+    }else {
+        res.send('please enter');
+        res.end();
+    }
+})
 
 // http://localhost:3000/fetch
 app.post("/fetch", (req, res) => {
