@@ -38,8 +38,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // http://localhost:3000/
 app.get("/", (req, res) => {
-    res.render("index", { 
-        title: "Home",
+    res.render("login", { 
+        title: "Login",
     });
 });
 
